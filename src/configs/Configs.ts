@@ -21,7 +21,6 @@ const getConfigIntKeyOrDefault = (key: string, defaultValue: number) => {
   return defaultValue;
 };
 
-
 /**
  * reads an optional config, returns default value if it does not exits
  * @param key
@@ -54,23 +53,6 @@ class Configs {
   // express config
   static apiPort = getConfigIntKeyOrDefault('api.port', 8080);
   static apiHost = getOptionalConfig<string>('api.host', 'localhost');
-
-  private static getAllowedOrigins = () => {
-    const allowedOrigins = config.get<Array<string>>('api.allowedOrigins');
-    if (
-      !Array.isArray(allowedOrigins) ||
-      allowedOrigins.some((origin) => typeof origin !== 'string')
-    ) {
-      throw new Error('ImproperlyConfigured. Api allowed origins is invalid.');
-    }
-    if (allowedOrigins.find((origin) => origin === '*')) {
-      console.warn(
-        'An allowed origin header with value "*" will cause all origins to be able to request this service, which may cause security issues'
-      );
-    }
-    return allowedOrigins;
-  };
-  static apiAllowedOrigins = Configs.getAllowedOrigins();
 
   static apiBodyLimit =
     getConfigIntKeyOrDefault('api.jsonBodyLimit', 50) * 1024 * 1024; // value in MB
