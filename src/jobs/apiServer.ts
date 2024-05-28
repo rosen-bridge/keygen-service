@@ -1,5 +1,4 @@
-import fastifyCors, { FastifyCorsOptions } from '@fastify/cors';
-import fastify, { FastifyInstance, FastifyRequest } from 'fastify';
+import fastify, { FastifyInstance } from 'fastify';
 import swagger from '@fastify/swagger';
 import swaggerUi from '@fastify/swagger-ui';
 import { TypeBoxTypeProvider } from '@fastify/type-provider-typebox';
