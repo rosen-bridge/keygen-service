@@ -46,7 +46,6 @@ class Tss {
       '-trustKey',
       Tss.trustKey,
     ];
-    console.log(args)
     spawn(Configs.tssExecutionPath, args, {
       detached: false,
       stdio: 'ignore',
